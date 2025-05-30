@@ -29,7 +29,7 @@ jobs:
 
             - name: Tar build files
               run: |
-                  tar -czf backend.tar.gz packages/backend/dist packages/backend/package.json
+                  tar -czf backend.tar.gz package.json yarn.lock packages/backend/dist packages/backend/package.json
 
             - name: Copy to server
               uses: appleboy/scp-action@v1
@@ -53,6 +53,9 @@ jobs:
                       mkdir -p /var/www/solvely
                       tar -xzf /tmp/backend.tar.gz -C /var/www/solvely
                       rm /tmp/backend.tar.gz
+
+                      cd /var/www/solvely
+                      yarn install --immutable
 
                       pm2 start backend
                       pm2 save
