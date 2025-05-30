@@ -50,8 +50,8 @@ jobs:
                   script: |
                       pm2 stop backend
 
-                      mkdir -p /var/www/backend
-                      tar -xzf /tmp/backend.tar.gz -C /var/www/backend
+                      mkdir -p /var/www/solvely
+                      tar -xzf /tmp/backend.tar.gz -C /var/www/solvely
                       rm /tmp/backend.tar.gz
 
                       pm2 start backend
