@@ -51,7 +51,7 @@ jobs:
                       pm2 stop backend
 
                       mkdir -p /var/www/backend
-                      tar -xzf /tmp/backend.tar.gz /var/www/backend
+                      tar -xzf /tmp/backend.tar.gz -C /var/www/backend
                       rm /tmp/backend.tar.gz
 
                       pm2 start backend
