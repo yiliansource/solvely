@@ -1,5 +1,5 @@
 {
-    "name": "solvely,
+    "name": "solvely",
     "scripts": {
         "dev": "conc --names frontend,backend \"yarn frontend:dev\" \"yarn backend:dev\"",
         "frontend:dev": "yarn workspace frontend dev",
