@@ -8320,16 +8320,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solvely@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "solvely@workspace:."
-  dependencies:
-    "@trivago/prettier-plugin-sort-imports": "npm:^5.2.2"
-    concurrently: "npm:^9.1.2"
-    prettier: "npm:^3.5.3"
-  languageName: unknown
-  linkType: soft
-
 "media-typer@npm:0.3.0":
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
@@ -10205,6 +10195,16 @@ __metadata:
   checksum: 10c0/00c3271e233ccf1fb83a3dd2060b94cc37817e0f797a93c560b9a7a86c4a0ec2961fb31263bdd24a3c28945e24868b5f063cd98744171d9e942c513454b50ae5
   languageName: node
   linkType: hard
+
+"solvely@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "solvely@workspace:."
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": "npm:^5.2.2"
+    concurrently: "npm:^9.1.2"
+    prettier: "npm:^3.5.3"
+  languageName: unknown
+  linkType: soft
 
 "sort-keys-length@npm:^1.0.0":
   version: 1.0.1
