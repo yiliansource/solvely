@@ -22,14 +22,14 @@ jobs:
                   node-version: 20
 
             - name: Install dependencies
-              run: yarn install --frozen-lockfile
+              run: yarn install --immutable
 
             - name: Build backend
               run: yarn backend:build
 
             - name: Tar build files
               run: |
-                  packages/backend
+                  cd packages/backend
                   tar -czf backend.tar.gz dist package.json
 
             - name: Copy to server
