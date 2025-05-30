@@ -40,7 +40,7 @@ jobs:
                   key: ${{ secrets.DROPLET_KEY }}
                   source: packages/backend/backend.tar.gz
                   target: /tmp
-                  rm: true
+                  overwrite: true
 
             - name: Extract and restart server
               uses: appleboy/ssh-action@v1.0.3
