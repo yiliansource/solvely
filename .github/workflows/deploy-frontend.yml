@@ -1,4 +1,4 @@
-name: Deploy backend
+name: Deploy frontend
 
 on:
     push:
@@ -6,7 +6,7 @@ on:
             - main
         paths:
             - ".github/workflows/**"
-            - "packages/backend/**"
+            - "packages/frontend/**"
             - "package.json"
     workflow_dispatch:
 
@@ -26,12 +26,12 @@ jobs:
             - name: Install dependencies
               run: yarn install --immutable
 
-            - name: Build backend
-              run: yarn backend:build
+            - name: Build frontend
+              run: yarn frontend:build
 
             - name: Tar build files
               run: |
-                  tar -czf backend.tar.gz package.json yarn.lock packages/backend/dist packages/backend/package.json
+                  tar -czf frontend.tar.gz package.json yarn.lock packages/frontend/.next packages/frontend/package.json
 
             - name: Copy to server
               uses: appleboy/scp-action@v1
@@ -39,24 +39,24 @@ jobs:
                   host: ${{ secrets.DROPLET_HOST }}
                   username: ${{ secrets.DROPLET_USER }}
                   key: ${{ secrets.DROPLET_KEY }}
-                  source: backend.tar.gz
+                  source: frontend.tar.gz
                   target: /tmp
                   overwrite: true
 
-            - name: Extract and restart backend process
+            - name: Extract and restart frontend process
               uses: appleboy/ssh-action@v1.0.3
               with:
                   host: ${{ secrets.DROPLET_HOST }}
                   username: ${{ secrets.DROPLET_USER }}
                   key: ${{ secrets.DROPLET_KEY }}
                   script: |
-                      pm2 stop backend
+                      pm2 stop frontend
 
                       mkdir -p /var/www/solvely
-                      tar -xzf /tmp/backend.tar.gz -C /var/www/solvely
-                      rm /tmp/backend.tar.gz
+                      tar -xzf /tmp/frontend.tar.gz -C /var/www/solvely
+                      rm /tmp/frontend.tar.gz
 
                       cd /var/www/solvely
                       yarn install --immutable
 
-                      pm2 start backend
+                      pm2 start frontend
