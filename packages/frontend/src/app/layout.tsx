@@ -3,6 +3,7 @@ import { DesktopNavigation } from "@/components/navigation";
 import { UserWidget } from "@/components/user-widget";
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import clsx from "clsx";
+import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import { Inconsolata, Inter, Kurale } from "next/font/google";
 import Image from "next/image";

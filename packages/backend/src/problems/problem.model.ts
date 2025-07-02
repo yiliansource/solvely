@@ -1,4 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinTable,
+    ManyToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from "typeorm";
+
+import { Tag } from "./tag.model";
 
 @Entity()
 export class Problem {
@@ -17,10 +27,11 @@ export class Problem {
     @Column({ type: "integer" })
     authorId: number;
 
-    @Column("simple-array", { nullable: true })
-    tags: string[];
-
     @Column({ type: "text" })
     source: string;
+
+    @ManyToMany(() => Tag, (tag) => tag.problems, { cascade: true })
+    @JoinTable()
+    tags: Tag[];
 }
 

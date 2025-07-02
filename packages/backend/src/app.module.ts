@@ -11,6 +11,7 @@ import { JwtAuthGuard } from "./auth/guards/jwt-auth.guard";
 import { LlmModule } from "./llms/llm.module";
 import { Problem } from "./problems/problem.model";
 import { ProblemModule } from "./problems/problem.module";
+import { Tag } from "./problems/tag.model";
 import { User } from "./users/user.model";
 import { UserModule } from "./users/user.module";
 
@@ -44,7 +45,7 @@ import { UserModule } from "./users/user.module";
                 username: configService.get<string>("DATABASE_USER"),
                 password: configService.get<string>("DATABASE_PASSWORD"),
                 database: configService.get<string>("DATABASE_NAME"),
-                entities: [User, Problem],
+                entities: [User, Problem, Tag],
                 synchronize: true,
             }),
         }),

@@ -1,5 +1,6 @@
 "use client";
 
+import ProblemRender from "@/components/problem-render";
 import { getApiUrl } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -58,8 +59,8 @@ export default function NewProblemPage() {
                         .split(",")
                         .map((k) => k.trim())
                         .filter(Boolean),
-                    credentials: "include",
                 }),
+                credentials: "include",
             });
 
             if (res.ok) {
@@ -88,6 +89,10 @@ export default function NewProblemPage() {
                 ></textarea>
                 <br />
                 Or upload an image to automatically convert to markdown and LaTeX.
+                <br />
+                <label>Problem preview</label>
+                <br />
+                <ProblemRender data={{ content }} />
                 <br />
                 <input name="ocrInputImage" type="file" onChange={processOCRInputImage} />
                 <br />

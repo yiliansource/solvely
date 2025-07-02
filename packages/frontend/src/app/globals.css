@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "react-loading-skeleton/dist/skeleton.css";
+@plugin "@tailwindcss/typography";
 
 :root {
     --background: #ffffff;
